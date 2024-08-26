@@ -1,0 +1,7 @@
+:root {
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --sky-blue: #4e75ff;
+  --pale-grey: #808080;
+  --naval-grey: #2e2f42;
+  font-family: "Montserat", sans-serif;
+}

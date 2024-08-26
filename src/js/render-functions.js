@@ -3,8 +3,13 @@
 import simpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-export default function renderGallery(fetchList) {
-  const gallery = document.querySelector("ul.gallery-list");
+const gallery = document.querySelector("ul.gallery-list");
+export function clearGallery() {
+  gallery.innerHTML = "";
+}
+
+export function renderGallery(fetchList) {
+  gallery.innerHTML = "";
   const galleryMarkup = fetchList
     .map(picture => {
       const {
@@ -24,10 +29,10 @@ export default function renderGallery(fetchList) {
                 </div>
             </a>
             <ul class="gallery-item-info">
-                <li class="gallery-item-likes">Likes ${likes}</li>
-                <li class="gallery-item-views">Views ${views}</li>
-                <li class="gallery-item-comments">Comments ${comments}</li>
-                <li class="gallery-item-downloads">Downloads ${downloads}</li>
+                <li class="gallery-item-likes"><b>Likes</b> ${likes}</li>
+                <li class="gallery-item-views"><b>Views</b> ${views}</li>
+                <li class="gallery-item-comments"><b>Comments</b> ${comments}</li>
+                <li class="gallery-item-downloads"><b>Downloads</b> ${downloads}</li>
             </ul>
         </li>
         `;

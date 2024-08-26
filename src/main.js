@@ -1,7 +1,7 @@
 "use strict";
 
 import fetchFrom from "./js/pixabay-api.js";
-import renderGallery from "./js/render-functions.js";
+import { renderGallery, clearGallery } from "./js/render-functions.js";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import "./css/custom-izitoast.css";
@@ -14,6 +14,7 @@ searchButton.addEventListener("click", async e => {
   e.preventDefault();
   const searchQuery = searchInput.value;
   if (searchQuery === "") {
+    clearGallery();
     return;
   }
   const res = await fetchFrom(searchQuery);
@@ -21,9 +22,7 @@ searchButton.addEventListener("click", async e => {
     console.log(res);
     renderGallery(res.hits);
   } else {
-    console.log(
-      "Sorry, there are no images matching your search query. Please try again!"
-    );
+    clearGallery();
     iziToast.error({
       titleSize: "16px",
       message:
