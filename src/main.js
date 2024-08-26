@@ -9,15 +9,21 @@ import errSvg from "./img/error.svg";
 
 const searchInput = document.querySelector(".search-input");
 const searchButton = document.querySelector(".search-btn");
+const loader = document.querySelector(".loader");
 
 searchButton.addEventListener("click", async e => {
   e.preventDefault();
+  loader.classList.toggle("visually-hidden");
   const searchQuery = searchInput.value;
   if (searchQuery === "") {
+    if (!loader.classList.contains("visually-hidden")) {
+      loader.classList.toggle("visually-hidden");
+    }
     clearGallery();
     return;
   }
   const res = await fetchFrom(searchQuery);
+  loader.classList.toggle("visually-hidden");
   if (parseInt(res.totalHits) > 0) {
     console.log(res);
     renderGallery(res.hits);

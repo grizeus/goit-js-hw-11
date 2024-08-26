@@ -2,6 +2,7 @@
 
 import simpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+import "../css/custom-slb.css";
 
 const gallery = document.querySelector("ul.gallery-list");
 export function clearGallery() {
